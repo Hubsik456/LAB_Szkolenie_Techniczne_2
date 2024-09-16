@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Hubert_Michna_w67259.Models.Wydatek>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    <p>Tutaj jest wyświetlane tylko 10 rekordów, posortowanych według daty wydatku, w kolejności rosnącej.</p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa_Wydatku).Replace("_", " ")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Typ_Wydatku_ID).Replace("_", " ")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data_Wydatku).Replace("_", " ")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Waluta)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.OrderBy(x => x.Data_Wydatku).Take(10)) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwa_Wydatku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Typ_Wydatku_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Wydatku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Waluta)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

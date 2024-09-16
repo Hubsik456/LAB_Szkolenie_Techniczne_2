@@ -1,0 +1,56 @@
+﻿@model Hubert_Michna_w67259.Models.Wydatek
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Wydatek</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nazwa_Wydatku" class="control-label">Nazwa Wydatku: </label>
+                <input asp-for="Nazwa_Wydatku" class="form-control" />
+                <span asp-validation-for="Nazwa_Wydatku" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Typ_Wydatku_ID" class="control-label">Typ Wydatku ID: </label>
+                <input asp-for="Typ_Wydatku_ID" class="form-control" />
+                <span asp-validation-for="Typ_Wydatku_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cena" class="control-label">Cena: </label>
+                <input asp-for="Cena" class="form-control" />
+                <span asp-validation-for="Cena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Data_Wydatku" class="control-label">Data Płatności:</label>
+                <input asp-for="Data_Wydatku" class="form-control" />
+                <span asp-validation-for="Data_Wydatku" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <!--<label asp-for="Waluta" class="control-label"></label>
+                <input asp-for="Waluta" class="form-control" />
+                <span asp-validation-for="Waluta" class="text-danger"></span>-->
+                <span>Waluta:</span><br>
+                @Html.RadioButtonFor(x => x.Waluta, "PLN") PLN <br>
+                @Html.RadioButtonFor(x => x.Waluta, "EURO") EURO
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
